@@ -5,7 +5,7 @@ import sys
 
 if __name__ == '__main__':
     school = {'1А': 24, '1Б': 32, '1В': 16, '2А': 21, '2Б': 15, '3А': 10}
-
+    print("Программа начала работу...")
     while True:
         command = input(">> ").lower()
 
