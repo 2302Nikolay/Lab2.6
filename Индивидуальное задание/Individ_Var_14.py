@@ -2,6 +2,7 @@
 # _*_ coding: utf-8 _*_
 
 import sys
+import datetime
 
 if __name__ == '__main__':
     # Список .
@@ -31,9 +32,9 @@ if __name__ == '__main__':
 
             # Добавить словарь в список.
             manslist.append(man)
-            # Отсортировать список в случае необходимости.
+            # Отсортировать список.
             if len(manslist) > 1:
-                manslist.sort(key=lambda item: item.get('name', ''))
+                manslist.sort(key=lambda item: datetime.datetime.strptime(item.get('date', ''), '%d.%m.%Y'))
 
         elif command == 'list':
             # Заголовок таблицы.
@@ -69,11 +70,11 @@ if __name__ == '__main__':
 
         elif command.startswith('select '):
             parts = command.split(' ', maxsplit=1)
-            sel = (parts[1])
+            sel = parts[1]
 
             count = 0
             for man in manslist:
-                if man.get('name') == sel:
+                if man.get('number') == sel:
                     count += 1
                     print(
                         '{:>4}: {}'.format(count, man.get('name', ''))
