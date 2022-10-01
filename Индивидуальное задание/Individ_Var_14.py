@@ -21,7 +21,8 @@ if __name__ == '__main__':
             # Запросить данные .
             name = input("Имя:  ")
             number = input("Номер телефона ")
-            date = input("Дата рождения  ")
+            date = input("Дата рождения: ")
+            date = datetime.datetime.strptime(date, '%d.%m.%Y').date()
 
             # Создать словарь.
             man = {
@@ -34,7 +35,7 @@ if __name__ == '__main__':
             manslist.append(man)
             # Отсортировать список.
             if len(manslist) > 1:
-                manslist.sort(key=lambda item: datetime.datetime.strptime(item.get('date', ''), '%d.%m.%Y'))
+                manslist.sort(key=lambda item: item.get('date', ''))
 
         elif command == 'list':
             # Заголовок таблицы.
@@ -58,7 +59,7 @@ if __name__ == '__main__':
             # Вывести данные о человеке.
             for idx, man in enumerate(manslist, 1):
                 print(
-                    '| {:>4} | {:<30} | {:<20} | {:>20} |'.format(
+                    '| {:>4} | {:<30} | {:<20} | {:<20}  |'.format(
                         idx,
                         man.get('name', ''),
                         man.get('number', ''),
