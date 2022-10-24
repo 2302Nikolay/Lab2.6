@@ -17,26 +17,6 @@ if __name__ == '__main__':
         if command == 'exit':
             break
 
-        elif command == 'add':
-            # Запросить данные .
-            name = input("Имя:  ")
-            number = input("Номер телефона ")
-            date = input("Дата рождения: ")
-            date = datetime.datetime.strptime(date, '%d.%m.%Y').date()
-
-            # Создать словарь.
-            man = {
-                'name': name,
-                'number': number,
-                'date': date,
-            }
-
-            # Добавить словарь в список.
-            manslist.append(man)
-            # Отсортировать список.
-            if len(manslist) > 1:
-                manslist.sort(key=lambda item: item.get('date', ''))
-
         elif command == 'list':
             # Заголовок таблицы.
             line = '+-{}-+-{}-+-{}-+-{}-+'.format(
@@ -85,7 +65,28 @@ if __name__ == '__main__':
 
             # Если счетчик равен 0, то человек не найден.
             if count == 0:
-                print("Человек не найден.")
+                print("Человек не найден.\n Вызвана комманда add: ")
+                command = 'add'
+
+        elif command == 'add':
+            # Запросить данные .
+            name = input("Имя:  ")
+            number = input("Номер телефона ")
+            date = input("Дата рождения: ")
+            date = datetime.datetime.strptime(date, '%d.%m.%Y').date()
+
+            # Создать словарь.
+            man = {
+                'name': name,
+                'number': number,
+                'date': date,
+            }
+
+            # Добавить словарь в список.
+            manslist.append(man)
+            # Отсортировать список.
+            if len(manslist) > 1:
+                manslist.sort(key=lambda item: item.get('date', ''))
 
         elif command == 'help':
             # Вывести справку о работе с программой.
